@@ -16,7 +16,7 @@ if (isset($_POST['pseudo'])){
 	$mdp = mysqli_real_escape_string($connexion, $mdp);
     $query = "SELECT * FROM `utilisateurs` WHERE pseudo='$pseudo' and mdp='".hash('sha256', $mdp)."'";
 	$result = mysqli_query($connexion,$query) or die(mysql_error());
-	
+
 	if (mysqli_num_rows($result) == 1) {
 		$utilisateur = mysqli_fetch_assoc($result);
 		// vérifier si l'utilisateur est un administrateur ou un utilisateur
@@ -29,10 +29,11 @@ if (isset($_POST['pseudo'])){
 		$message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
 	}
 }
+
 ?>
 <form class="box" action="" method="post" name="login">
-<h1 class="box-logo box-title"><a href="https://waytolearnx.com/">WayToLearnX.com</a></h1>
-<h1 class="box-title">Connexion</h1>
+<h1 class="box-logo box-title"><a href="https://waytolearnx.com/">GAME CLUB</a></h1>
+<h1 class="box-title">Connexion Admin</h1>
 <input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur">
 <input type="password" class="box-input" name="mdp" placeholder="Mot de passe">
 <input type="submit" value="Connexion " name="submit" class="box-button">
