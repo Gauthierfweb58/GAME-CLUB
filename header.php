@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <header>
 <div class="mobile">
    <div class="header"></div>

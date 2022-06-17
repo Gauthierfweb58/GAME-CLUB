@@ -15,7 +15,7 @@ if (isset($_POST['pseudo'])){
 	$mdp = stripslashes($_REQUEST['mdp']);
 	$mdp = mysqli_real_escape_string($connexion, $mdp);
     $query = "SELECT * FROM `utilisateurs` WHERE pseudo='$pseudo' and mdp='".hash('sha256', $mdp)."'";
-	$result = mysqli_query($connexion,$query) or die(mysqli_error());
+	$result = mysqli_query($connexion,$query); //or die(mysqli_error());
 	
 	if (mysqli_num_rows($result) == 1) {
 		$utilisateur = mysqli_fetch_assoc($result);
