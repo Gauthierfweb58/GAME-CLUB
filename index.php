@@ -5,6 +5,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,43 +39,44 @@ include 'header.php'
                 echo "Erreur : " . $e->getMessage();
             }      
 ?>
-<body>
-<div class="box">
-    <a href="#popup" class="button">Bienvenue sur GAME CLUB.</a>
-  </div>
 
-  <div id="popup" class="overlay">
-    <div class="popup">
-      <h2>Conditions générales</h2>
-      <a href="#" class="cross">&times;</a>
-      <p>Merci de rester respectueux envers les administrateurs de ce site qui sont tout novice pour l'INSTANT</p>
+<body>
+    <div class="box">
+        <a href="#popup" class="button">Bienvenue sur GAME CLUB.</a>
     </div>
-  </div>
-<main>
-  <div id='center' class="main center">
-    <div class="mainInner">
-      <h3 class="switch"><span>NOUVEAUTES</span></h3>
+
+    <div id="popup" class="overlay">
+        <div class="popup">
+            <h2>Conditions générales</h2>
+            <a href="#" class="cross">&times;</a>
+            <p>Merci de rester respectueux envers les administrateurs de ce site qui sont tout novice pour l'INSTANT</p>
+        </div>
     </div>
-    <div class="grid_index">     
-      <?php 
+    <main>
+        <div id='center' class="main center">
+            <div class="mainInner">
+                <h3 class="switch"><span>NOUVEAUTES</span></h3>
+            </div>
+            <div class="grid_index">
+                <?php 
 $i=1; 
 foreach ($produits as $produit) {?>
-  <div class="item-<?php echo $i; ?>">
-  <a href="page_jeux_description.php?page=<?php echo $produit["id"]; ?>">
-      <img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>"></a>
-      <div class="contenu">
-                <div class="pegi"><img src="./img/<?php echo $produit["image_pegi"] ?>"></div>
-                <div class="text"><?php echo $produit["resume"] ?></div>
-                  
-      </div>
-  </div>
-<?php
+                <div class="item-<?php echo $i; ?>">
+                    <a href="page_jeux_description.php?page=<?php echo $produit["id"]; ?>">
+                        <img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>"></a>
+                    <div class="contenu">
+                        <div class="pegi"><img src="./img/<?php echo $produit["image_pegi"] ?>"></div>
+                        <div class="text"><?php echo $produit["resume"] ?></div>
+
+                    </div>
+                </div>
+                <?php
 $i++;} 
 ?>
 
 
 
-<!--<div class="item-1">
+                <!--<div class="item-1">
           <a href="page_jeux_description_enfant.php">
             <img src="img/switch3.jfif" alt="super_mario_3d"></a>
               <div class="contenu">
@@ -83,7 +85,7 @@ $i++;}
               </div>
       </div>-->
 
-       <!-- <div class="item-2">
+                <!-- <div class="item-2">
             <a href="#">
                 <img  src="img/switch2.jfif" alt="mario_kart8">  </a>
                 <div class="contenu">
@@ -166,21 +168,22 @@ $i++;}
                   
             </div>
           </div>-->
-    </div>
-    <div class="container">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h3 class="animate-charcter"> DES JEUX POUR TOUTE LA FAMILLE</h3>
-    </div>
-  </div>
-</div>
-    <!--<div class="mainInner">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="animate-charcter"> DES JEUX POUR TOUTE LA FAMILLE</h3>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="mainInner">
       <div>DES JEUX POUR TOUTE LA FAMILLE </div>
     </div>-->
-  </div>
-</main>
-  <?php
+        </div>
+    </main>
+    <?php
   include 'footer.php'
   ?>
 </body>
+
 </html>
