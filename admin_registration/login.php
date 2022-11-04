@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-	<link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-<?php
+    <?php
 require('config.php');
 session_start();
 
@@ -30,16 +32,17 @@ if (isset($_POST['pseudo'])){
 	}
 }
 ?>
-<form class="box" action="" method="post" name="login">
-<h1 class="box-logo box-title"><a href="https://waytolearnx.com/">WayToLearnX.com</a></h1>
-<h1 class="box-title">Connexion</h1>
-<input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur">
-<input type="password" class="box-input" name="mdp" placeholder="Mot de passe">
-<input type="submit" value="Connexion " name="submit" class="box-button">
-<p class="box-register">Vous êtes nouveau ici? <a href="register.php">S'inscrire</a></p>
-<?php if (! empty($message)) { ?>
-    <p class="errorMessage"><?php echo $message; ?></p>
-<?php } ?>
-</form>
+    <form class="box" action="" method="post" name="login">
+
+        <h1 class="box-title">Connexion</h1>
+        <input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur">
+        <input type="password" class="box-input" name="mdp" placeholder="Mot de passe">
+        <input type="submit" value="Connexion " name="submit" class="box-button">
+        <p class="box-register">Vous êtes nouveau ici? <a href="register.php">S'inscrire</a></p>
+        <?php if (! empty($message)) { ?>
+        <p class="errorMessage"><?php echo $message; ?></p>
+        <?php } ?>
+    </form>
 </body>
+
 </html>

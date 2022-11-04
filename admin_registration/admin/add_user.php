@@ -1,12 +1,12 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../style.css" />
 </head>
+
 <body>
-<?php
+    <?php
 require('../config.php');
 
 if (isset($_REQUEST['pseudo'], $_REQUEST['email'], $_REQUEST['type'], $_REQUEST['mdp'])){
@@ -35,21 +35,22 @@ if (isset($_REQUEST['pseudo'], $_REQUEST['email'], $_REQUEST['type'], $_REQUEST[
     }
 }else{
 ?>
-<form class="box" action="#" method="post">
-	<h1 class="box-logo box-title"><a href="https://waytolearnx.com/">WayToLearnX.com</a></h1>
-    <h1 class="box-title">Ajouter utilisateur</h1>
-	<input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur" required />
-    <input type="text" class="box-input" name="email" placeholder="Email" required />
-	<div class="input-group">
-			<select class="box-input" name="type" id="type" >
-				<option value="" disabled selected>Type</option>
-				<option value="admin">Administreur</option>
-				<option value="user">Utilisateur</option>
-			</select>
-	</div>
-    <input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required />
-    <input type="submit" name="submit" value="+ Add" class="box-button" />
-</form>
-<?php } ?>
+    <form class="box" action="#" method="post">
+
+        <h1 class="box-title">Ajouter utilisateur</h1>
+        <input type="text" class="box-input" name="pseudo" placeholder="Nom d'utilisateur" required />
+        <input type="text" class="box-input" name="email" placeholder="Email" required />
+        <div class="input-group">
+            <select class="box-input" name="type" id="type">
+                <option value="" disabled selected>Type</option>
+                <option value="admin">Administreur</option>
+                <option value="user">Utilisateur</option>
+            </select>
+        </div>
+        <input type="password" class="box-input" name="mdp" placeholder="Mot de passe" required />
+        <input type="submit" name="submit" value="+ Ajouter" class="box-button" />
+    </form>
+    <?php } ?>
 </body>
+
 </html>

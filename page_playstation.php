@@ -4,6 +4,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,35 +38,37 @@ include 'header.php'
                 echo "Erreur : " . $e->getMessage();
             }      
 ?>
+
 <body>
-<main>
-  <div id='center' class="main center">
-<h3 class="playstation"><span>PLAYSTATION</span></h3>
-        <div class="grid2">
+    <main>
+        <div id='center' class="main center">
+            <h3 class="playstation"><span>PLAYSTATION</span></h3>
+            <div class="grid2">
 
 
-        <?php
+                <?php
         $i=1; 
 foreach ($produits as $produit) {?>
-  <div class="item-<?php echo $i; ?>">
-  <a href="page_jeux_description.php?page=<?php echo $produit["id"]; ?>">
-      <img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>"></a>
-      <div class="description">
-                <div class="pegi"><img src="./img/<?php echo $produit["image_pegi"] ?>"></div>
-                <div class="text"><?php echo $produit["resume"] ?></div>
-                  
-      </div>
-  </div>
-<?php
+                <div class="item-<?php echo $i; ?>">
+                    <a href="page_jeux_description.php?page=<?php echo $produit["id"]; ?>">
+                        <img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>"></a>
+                    <div class="description">
+                        <div class="pegi"><img src="./img/<?php echo $produit["image_pegi"] ?>"></div>
+                        <div class="text"><?php echo $produit["resume"] ?></div>
+
+                    </div>
+                </div>
+                <?php
 $i++;} 
-?>       
+?>
             </div>
         </div>
-</main>
-<?php
+    </main>
+    <?php
 include 'footer.php';
 ?>
 </body>
+
 </html>
 
 <!-- <div class="item-1">

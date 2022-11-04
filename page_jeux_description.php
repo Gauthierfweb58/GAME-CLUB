@@ -5,6 +5,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,13 @@ session_start();
     <title>page jeux description</title>
 </head>
 <?php
-include 'header.php'
+include 'header.php';
+$page=0;
+if (!empty($_GET)){
+    $page=$_GET['page'];
+     } else{
+        die("vous n'avez pas le droit de venir sur cette page");
+        }
 ?>
 <?php
             $servname = "localhost"; $dbname = "game_club"; $user = "root"; $pass = "Gladiator/89";
@@ -25,10 +32,10 @@ include 'header.php'
                 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
                 /*Sélectionne les valeurs dans les colonnes nom, descriptif et images de la table
-                 *users pour chaque entrée de la table*/
+                 *produits pour chaque entrée de la table*/
                 $requete = $connexion->prepare("SELECT id, console, id_categories, nom, description, image_pegi, image, video FROM produits WHERE id=:id");
                 $requete->execute([
-               ":id"=> $_GET['page'],
+               ":id"=> $page
                 ]);
                 
                 /*Retourne un tableau associatif pour chaque entrée de notre table
@@ -38,40 +45,46 @@ include 'header.php'
             }  
             catch(PDOException $e){
                 echo "Erreur : " . $e->getMessage();
-            }      
+            } 
+            if (empty($produit)){
+               
+                    die("vous n'avez pas le droit de venir sur cette page");
+                    }   
 ?>
-<?php
-    $_GET['page'];
-    ?>
+
 <body>
     <main>
-    <div class="categorie_page_jeu_enfant"><span><?php echo $produit["console"] ?></div>
-    <div class=effet_3d_enfant><h1><?php echo $produit["nom"] ?></h1></div>
-    <div class="grid_jeu_ind">
+        <div class="categorie_page_jeu_enfant"><span><?php echo $produit["console"] ?></div>
+        <div class="effet_3d_enfant">
+            <h1><?php echo $produit["nom"] ?></h1>
+        </div>
+        <div class=" grid_jeu_ind">
 
-    
-    
-        <div class="item_jeu_image">
-            <img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>">
-        </div>
 
-        <div class="item_jeu_description">
-            <article>
-            <?php echo $produit["description"] ?>   
-            </article>
+
+            <div class="item_jeu_image">
+                <img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>">
+            </div>
+
+            <div class="item_jeu_description">
+                <article>
+                    <?php echo $produit["description"] ?>
+                </article>
+            </div>
+
+            <div class="item_jeu_pegi">
+                <img src="./img/<?php echo $produit["image_pegi"] ?>">
+            </div>
+            <div class="video">
+                <button class="bouton_video"><a href="<?php echo $produit["video"] ?>" target="_blank">Voir
+                        teaser</a></button>
+            </div>
         </div>
-       
-        <div class="item_jeu_pegi">
-            <img src="./img/<?php echo $produit["image_pegi"] ?>">
-        </div>
-    <div class="video">
-            <button class="bouton_video"><a href="<?php echo $produit["video"] ?>" target="_blank">Voir teaser</a></button>
-        </div>
-        </div>
-</main>
+    </main>
     <?php
 include 'footer.php'
 ?>
 </body>
-</html>
 
+
+</html>
