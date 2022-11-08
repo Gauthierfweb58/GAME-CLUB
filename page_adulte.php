@@ -5,6 +5,7 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,8 +25,8 @@ include 'header.php'
                 $connexion = new PDO("mysql:host=$servname;dbname=$dbname;charset=utf8", $user, $pass);
                 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 
-                /*Sélectionne les valeurs dans les colonnes nom, descriptif et images de la table
-                 *users pour chaque entrée de la table*/
+                /*Sélectionne les valeurs dans les colonnes nom, descriptif et images de la table dans la table produits par id_categories =2 (ici adulte)limité à 9 et par ordre aléatoire à chaque visite de page*/
+                 
                 $requete = $connexion->prepare("SELECT id, image, resume, image_pegi, nom FROM produits WHERE id_categories=2 ORDER BY RAND() LIMIT 9 ");
                 $requete->execute();
                 
@@ -38,34 +39,36 @@ include 'header.php'
                 echo "Erreur : " . $e->getMessage();
             }      
 ?>
+
 <body>
-<main>
-  <div id='center' class="main center">
-    <h3 class="adulte"><span>Sélection du moment <br>réservé aux adultes</span></h3>
-    <div class="grid2">
-<?php 
+    <main>
+        <div id='center' class="main center">
+            <h3 class="adulte"><span>Sélection du moment <br>réservé aux adultes</span></h3>
+            <div class="grid2">
+                <?php 
 $i=1; 
 foreach ($produits as $produit) {?>
-<div class="item-<?php echo $i; ?>">
-<a href="page_jeux_description.php?page=<?php echo $produit["id"]; ?>">
-<img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>"></a>
-<div class="description">
-        <div class="pegi"><img src="./img/<?php echo $produit["image_pegi"] ?>"></div>
-        <div class="text"><?php echo $produit["resume"] ?></div>
-          
-</div>
-</div>
-<?php
+                <div class="item-<?php echo $i; ?>">
+                    <a href="page_jeux_description.php?page=<?php echo $produit["id"]; ?>">
+                        <img src="./img/<?php echo $produit["image"] ?>" alt="<?php echo $produit["nom"] ?>"></a>
+                    <div class="description">
+                        <div class="pegi"><img src="./img/<?php echo $produit["image_pegi"] ?>"></div>
+                        <div class="text"><?php echo $produit["resume"] ?></div>
+
+                    </div>
+                </div>
+                <?php
 $i++;} 
 ?>
-</div>
-</div>
-</main>
+            </div>
+        </div>
+    </main>
     <?php
 include 'footer.php'
 ?>
 
 </body>
+
 </html>
 
 <!--<div class="item-2">
