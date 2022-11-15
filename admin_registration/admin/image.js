@@ -5,7 +5,7 @@ event (event) : evenement d'ecoute
 function loadFiles(event) {
     // on recupere la liste des fichiers
     let files = event.target.files;
-    // Ou visualiser l'image qui sera telecharge
+    // Ou visualiser l'image qui sera telechargee
     let preview = document.getElementById("add-img");
     // une boucle sur les fichiers telecharges
     for (var i = 0; i < files.length; i++) {
@@ -14,7 +14,7 @@ function loadFiles(event) {
         // le type du fichier
         var imageType = /^image\//;
   
-        // verifier qu'on a bien une image, sinon on n'affiche rien.
+        // verifier que l'on a bien une image, sinon on n'affiche rien.
         if (!imageType.test(file.type)) {
             continue;
         }

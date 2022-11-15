@@ -17,8 +17,8 @@ $name = $_FILES['produits']['name'];
 $size = $_FILES['produits']['size'];
 $error = $_FILES['produits']['error'];
 
-$tabExtension = explode('.', $name);
-$extension = strtolower(end($tabExtension));
+$tabExtension = explode('.', $name); //Scinde une chaîne de caractères en segments
+$extension = strtolower(end($tabExtension)); //Renvoie une chaîne en minuscules
 
 $extensions = ['jpg', 'png', 'jpeg', 'gif', 'jfif'];
 $maxSize = 400000;
@@ -50,6 +50,7 @@ if(in_array($extension, $extensions) && $size <= $maxSize && $error==0){ $unique
     $sth = $dbco->prepare("
     INSERT INTO produits(nom,resume,description,id_categories,image,image_pegi,console,video)
     VALUES(:nom,:resume,:description,:id_categories,:image,:image_pegi,:console,:video)");
+    // bindParam Lie une variable PHP à un marqueur nommé ou interrogatif correspondant dans une requête SQL utilisée pour préparer la requête. Contrairement à PDOStatement::bindValue(), la variable est liée en tant que référence et ne sera évaluée qu'au moment de l'appel à la fonction PDOStatement::execute().
     $sth->bindParam(':nom',$_POST['nom']);
     $sth->bindParam(':resume',$_POST['resume']);
     $sth->bindParam(':description',$_POST['description']);
@@ -263,20 +264,3 @@ if(in_array($extension, $extensions) && $size <= $maxSize && $error==0){ $unique
 </body>
 
 </html>
-
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
